@@ -31,7 +31,7 @@ Each Permutation is a copy of an array of size V: $O(V * V!)$
 
 Validating Permutations: `for (let index = 0; index < permutations.length; index++) {`
 
-There are $V! permutations, so for each permutation we iterate linearly here:
+There are $V!$ permutations, so for each permutation we iterate linearly here:
 ```
 for (let index = 0; index < nodes1.length; index++) {
     mapping[nodes1[index]] = perm[index];
@@ -64,7 +64,7 @@ Verifying the Graph States $\Theta(V! * ElogV)$
 
 Insignificant terms fall away to:
 
-$\Theta(V! * (V + Elog(V)))$
+$\Theta(V! * Elog(V))$
 
 This is the worst case time complexity of my implementation. For $V!$ number of permutations, there is a cost of $O(V + ElogV)$ from mapping, list lookups across the graph, and sorting of neighbor lists for comparisons.
 
