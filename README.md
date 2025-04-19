@@ -75,3 +75,5 @@ This is the worst case time complexity of my implementation. For $V!$ number of 
 - Referenced Heaps Algorithm implementation I wrote for brute-force repository assignment.
 
 - Referenced https://www.geeksforgeeks.org/graph-isomorphisms-connectivity/ for algorithm research and code references. All code written is my own.
+
+"I certify that I have listed all sources used to complete this exercise, including the use of any Large Language Models. All of the work is my own, except where stated otherwise. I am aware that plagiarism carries severe penalties and that if plagiarism is suspected, charges may be filed against me without prior notice."
