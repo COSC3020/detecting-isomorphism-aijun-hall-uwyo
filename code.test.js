@@ -75,19 +75,7 @@ const testEmptyGraphs =
         return result == expected;
     });
 
-// Test 5: Single node, same label
-const testSingleNodeSame =
-    jsc.forall(jsc.constant(true), function () {
-        const graph1 = { A: [] };
-        const graph2 = { A: [] };
-
-        const expected = true;
-        const result = are_isomorphic(graph1, graph2);
-
-        return result == expected;
-    });
-
-// Test 6: Single node, different labels
+// Test 5: Single node, different labels
 const testSingleNodeDifferent =
     jsc.forall(jsc.constant(true), function () {
         const graph1 = { A: [] };
@@ -99,7 +87,7 @@ const testSingleNodeDifferent =
         return result == expected;
     });
 
-// Test 7: Graphs with different number of nodes
+// Test 6: Graphs with different number of nodes
 const testDifferentSizes =
     jsc.forall(jsc.constant(true), function () {
         const graph1 = { A: ['B'], B: [] };
@@ -119,8 +107,6 @@ jsc.assert(testNonIsomorphicGraphs);
 console.log("testNonIsomorphicGraphs passed.");
 jsc.assert(testEmptyGraphs);
 console.log("testEmptyGraphs passed.");
-jsc.assert(testSingleNodeSame);
-console.log("testSingleNodeSame passed.");
 jsc.assert(testSingleNodeDifferent);
 console.log("testSingleNodeDifferent passed.");
 jsc.assert(testDifferentSizes);

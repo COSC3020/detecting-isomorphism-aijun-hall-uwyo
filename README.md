@@ -18,55 +18,25 @@ What is the worst-case big $\Theta$ time complexity of your algorithm?
 
 <hr>
 
-Checking degree equality: `for (let index = 0; index < nodes1.length; index++) {`
+Degree precheck: $O(V^2)$
 
-Iterating over the nodes: $O(V)$
-Sorting each list of degrees $O(Vlog(V))$
+Computes the degree of every vertex and sorts two length-V arrays.
 
-Generating Permutations of Vertex Labels: `const permutations = generatePermutations(nodes2);`
+Generating all permutations: $O(V! * V)$
 
-Number of Permutations is $V!$
+Heap's algorithm visits the base case V! times. At each visit it copies an array of length V.
 
-Each Permutation is a copy of an array of size V: $O(V * V!)$
+Verifying perumtations (every loop instance): $O(V^2)$
 
-Validating Permutations: `for (let index = 0; index < permutations.length; index++) {`
+For every vertex we write an entry into mapping, then scan the full adjacany list- which can be at most $V - 1$ items. This is done from the first graph and then scanned into the corresponding list in the second graph. That makes 2 * V comparisons per vertex for $O(V^2)$ per permutation
 
-There are $V!$ permutations, so for each permutation we iterate linearly here:
-```
-for (let index = 0; index < nodes1.length; index++) {
-    mapping[nodes1[index]] = perm[index];
-}
-```
-$O(V)$
+Verifying perumtations (all loops/complete runtime): $O(V! * V^2)$
 
-We also check the edge state consistency in the mapping. For each vertex, we linearly grab the neighbors from graph1 and sort them for comparison:
-```
-for (let j_index = 0; j_index < neighbors1.length; j_index++) {
-    mappedNeighbors1.push(mapping[neighbors1[j_index]]);
-}
-
-mappedNeighbors1.sort();
-```
-
-Edge lookups: $O(E)$
-
-Across all neighbor lists with sorted comparison: $O(Elog V)$
-
-Therefore every perumtation will run: $O(V + Elog V)$
+The $O(V^2)$ verification loop is repeated for each of the $V! permutations$.
 
 General:
 
-Degree Check: $\Theta(VlogV)$
-
-Generating Permutations: $\Theta(V * V!)$
-
-Verifying the Graph States $\Theta(V! * ElogV)$
-
-Insignificant terms fall away to:
-
-$\Theta(V! * Elog(V))$
-
-This is the worst case time complexity of my implementation. For $V!$ number of permutations, there is a cost of $O(V + ElogV)$ from mapping, list lookups across the graph, and sorting of neighbor lists for comparisons.
+$\Theta(V! * V^2)$
 
 - Referenced https://stackoverflow.com/questions/3876354/algorithm-for-determining-if-2-graphs-are-isomorphic for working through the problem and reading references
 
